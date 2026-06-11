@@ -64,8 +64,18 @@
             transform: translateY(20px);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-bottom: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .slide {
+                align-items: center;
+                padding-bottom: 0;
+            }
         }
 
         .slide.active {
@@ -89,11 +99,18 @@
 
         /* Canvas Grid Layout */
         .bmc-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: auto auto auto;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
-            height: 100%;
+            height: auto;
+        }
+        @media (min-width: 1024px) {
+            .bmc-grid {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: auto auto auto;
+                height: 100%;
+            }
         }
         .bmc-item { @apply bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col; }
         .bmc-header { @apply font-display font-bold text-sm text-brand-600 mb-2 flex items-center gap-2 border-b border-slate-100 pb-2; }
@@ -135,13 +152,18 @@
 <body class="text-slate-800 bg-pattern h-screen w-screen flex antialiased selection:bg-brand-500 selection:text-white">
 
     <!-- Sidebar Navigation -->
-    <aside class="w-72 bg-white border-r border-slate-200 shadow-xl z-50 flex flex-col h-full relative">
-        <div class="p-6 border-b border-slate-100">
-            <div class="flex items-center gap-3 text-brand-600 mb-1">
-                <i class="fa-solid fa-utensils text-xl"></i>
-                <h1 class="font-display font-bold text-lg tracking-tight">Sinfonia do Sabor</h1>
+    <aside id="sidebar" class="fixed md:relative w-72 bg-white border-r border-slate-200 shadow-xl z-[70] flex flex-col h-full transition-transform duration-300 -translate-x-full md:translate-x-0">
+        <div class="p-6 border-b border-slate-100 flex justify-between items-start">
+            <div>
+                <div class="flex items-center gap-3 text-brand-600 mb-1">
+                    <i class="fa-solid fa-utensils text-xl"></i>
+                    <h1 class="font-display font-bold text-lg tracking-tight">Sinfonia do Sabor</h1>
+                </div>
+                <p class="text-xs text-slate-500">Transformação Digital • Grupo 8</p>
             </div>
-            <p class="text-xs text-slate-500">Transformação Digital • Grupo 8</p>
+            <button onclick="toggleSidebar()" class="md:hidden w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-lg transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
 
         <nav class="flex-1 overflow-y-auto py-4" id="sidebar-nav">
@@ -156,26 +178,31 @@
     <!-- Main Content Area -->
     <main class="flex-1 relative h-full overflow-hidden flex flex-col">
         
+        <!-- Mobile Sidebar Toggle -->
+        <button onclick="toggleSidebar()" class="md:hidden absolute top-4 left-4 z-[60] w-10 h-10 rounded-xl bg-white text-brand-600 shadow-md border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
         <!-- Progress Bar -->
-        <div class="h-1 w-full bg-slate-100 absolute top-0 left-0 z-50">
+        <div class="h-1 w-full bg-slate-100 absolute top-0 left-0 z-[60]">
             <div id="progress-bar" class="h-full bg-brand-500 transition-all duration-300 w-0"></div>
         </div>
 
         <!-- Slides Container -->
-        <div id="slides-container" class="relative w-full h-full p-8 md:p-12 lg:p-16">
+        <div id="slides-container" class="relative w-full h-full p-4 pt-20 md:pt-12 md:p-12 lg:p-16">
             
             <section class="slide active" id="slide-1" data-title="Capa do Projeto">
-                <div class="glass-card rounded-3xl w-full max-w-5xl h-full flex flex-col md:flex-row overflow-hidden relative">
+                <div class="glass-card rounded-3xl w-full max-w-5xl h-auto min-h-full flex flex-col md:flex-row overflow-hidden relative">
                     <!-- Decorative element -->
                     <div class="absolute top-0 right-0 w-96 h-96 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 translate-x-1/2 -translate-y-1/2"></div>
                     <div class="absolute bottom-0 left-0 w-72 h-72 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 -translate-x-1/2 translate-y-1/2"></div>
 
-                    <div class="flex-1 p-12 md:p-20 flex flex-col justify-center z-10">
+                    <div class="flex-1 p-8 md:p-20 flex flex-col justify-center z-10">
                         <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-600 text-xs font-semibold tracking-wide uppercase mb-6 border border-brand-100 w-max">Apresentação Executiva</span>
-                        <h1 class="text-5xl md:text-7xl font-display font-bold text-dark leading-tight mb-6">
+                        <h1 class="text-4xl md:text-7xl font-display font-bold text-dark leading-tight mb-6">
                             Projeto <br><span class="text-brand-600">Sinfonia do Sabor</span>
                         </h1>
-                        <p class="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed">
+                        <p class="text-base md:text-lg text-slate-600 mb-10 max-w-xl leading-relaxed">
                             Plano executivo de transformação digital e implantação de gestão ágil para modernização de atendimento e inteligência de negócios.
                         </p>
                         <div class="mt-auto grid grid-cols-2 gap-6 border-t border-slate-100 pt-8">
@@ -193,17 +220,17 @@
             </section>
 
             <section class="slide" id="slide-2" data-title="Sumário Executivo">
-                <div class="glass-card rounded-3xl w-full max-w-5xl h-full p-12 flex flex-col justify-center relative overflow-hidden">
-                    <i class="fa-solid fa-quote-left absolute top-12 left-12 text-8xl text-slate-100 z-0"></i>
+                <div class="glass-card rounded-3xl w-full max-w-5xl h-auto min-h-full p-8 md:p-12 flex flex-col justify-center relative overflow-hidden">
+                    <i class="fa-solid fa-quote-left absolute top-4 left-4 md:top-12 md:left-12 text-6xl md:text-8xl text-slate-100 z-0"></i>
                     
-                    <div class="z-10 max-w-3xl mx-auto text-center">
-                        <h2 class="text-4xl font-display font-bold text-dark mb-8">Sumário Executivo</h2>
+                    <div class="z-10 max-w-3xl mx-auto text-center mt-8 md:mt-0">
+                        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-8">Sumário Executivo</h2>
                         <div class="w-20 h-1 bg-brand-500 mx-auto mb-10 rounded-full"></div>
                         
-                        <p class="text-2xl text-slate-700 leading-relaxed font-light mb-8">
+                        <p class="text-xl md:text-2xl text-slate-700 leading-relaxed font-light mb-8">
                             A solução recomendada adota uma <strong class="font-semibold text-brand-600">abordagem híbrida</strong>.
                         </p>
-                        <p class="text-xl text-slate-600 leading-relaxed">
+                        <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
                             A infraestrutura, contratações e implantação seguem uma lógica preditiva, enquanto o desenvolvimento do produto digital é conduzido em <strong class="text-dark">ciclos iterativos e ágeis curtos</strong>, com validações contínuas junto ao gerente do restaurante.
                         </p>
                     </div>
@@ -211,7 +238,7 @@
             </section>
 
             <section class="slide" id="slide-3" data-title="Escopo e MVP">
-                <div class="w-full max-w-5xl h-full flex flex-col">
+                <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
                     <h2 class="text-3xl font-display font-bold text-dark mb-2">1. Escopo, Requisitos e MVP</h2>
                     <p class="text-slate-500 mb-8">Pilares fundamentais da modernização da operação.</p>
                     
@@ -247,7 +274,7 @@
             </section>
 
             <section class="slide" id="slide-4" data-title="Cronograma e Riscos">
-                <div class="w-full max-w-5xl h-full flex flex-col">
+                <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
                     <h2 class="text-3xl font-display font-bold text-dark mb-8">2. Cronograma e Riscos Críticos</h2>
                     
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 flex-1 pb-8">
@@ -298,7 +325,7 @@
             </section>
 
             <section class="slide" id="slide-5" data-title="Metodologia Ágil">
-                <div class="w-full max-w-5xl h-full flex flex-col">
+                <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
                     <h2 class="text-3xl font-display font-bold text-dark mb-2">3. Metodologia Ágil (Scrum)</h2>
                     <p class="text-slate-500 mb-8">Execução do desenvolvimento do produto digital.</p>
                     
@@ -320,7 +347,7 @@
                                 <p class="text-slate-700 relative z-10">O ciclo de desenvolvimento (Semanas 5 a 11) será dividido em exatas <strong>3 Sprints de 2 semanas cada</strong>, obedecendo ao limite oficial do <em>Scrum Guide</em> e garantindo entregas parciais rápidas.</p>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="border border-slate-100 p-4 rounded-lg hover:shadow-md transition-shadow bg-white">
                                     <div class="text-brand-500 font-bold mb-1"><i class="fa-solid fa-users fa-fw"></i> Daily Scrum</div>
                                     <p class="text-xs text-slate-500">Alinhamentos rápidos de 15 min.</p>
@@ -344,7 +371,7 @@
             </section>
 
             <section class="slide" id="slide-6" data-title="Business Model Canvas">
-                <div class="w-full max-w-5xl h-full flex flex-col">
+                <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
                     <h2 class="text-3xl font-display font-bold text-dark mb-6">4. Business Model Canvas</h2>
                     
                     <div class="flex-1 glass-card p-6 rounded-2xl">
@@ -410,7 +437,7 @@
                             <!-- Bottom Row -->
                             <div class="bmc-item" style="grid-column: 1 / span 2; grid-row: 3;">
                                 <div class="bmc-header text-red-600"><i class="fa-solid fa-money-bill-wave"></i> Estrutura de Custos</div>
-                                <div class="bmc-content flex justify-between px-2">
+                                <div class="bmc-content flex flex-col sm:flex-row sm:justify-between px-2 gap-2 sm:gap-0">
                                     <span><strong>CAPEX:</strong> R$ 46.530,00</span>
                                     <span><strong>OPEX:</strong> R$ 450,00/mês</span>
                                 </div>
@@ -429,16 +456,16 @@
             </section>
 
             <section class="slide" id="slide-7" data-title="Modelagem do Sistema">
-                <div class="w-full max-w-5xl h-full flex flex-col">
+                <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
                     <h2 class="text-3xl font-display font-bold text-dark mb-4">5. Modelagem e Arquitetura (UML)</h2>
                     
                     <div class="glass-card rounded-2xl flex-1 flex flex-col overflow-hidden border border-slate-200">
                         <!-- Tab Headers -->
-                        <div class="flex border-b border-slate-200 bg-slate-50">
-                            <button onclick="changeDiagram(1)" id="tab-1" class="flex-1 py-4 text-sm font-semibold text-brand-600 border-b-2 border-brand-600 bg-white transition-all">1. Casos de Uso</button>
-                            <button onclick="changeDiagram(2)" id="tab-2" class="flex-1 py-4 text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">2. Classes</button>
-                            <button onclick="changeDiagram(3)" id="tab-3" class="flex-1 py-4 text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">3. Sequência</button>
-                            <button onclick="changeDiagram(4)" id="tab-4" class="flex-1 py-4 text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">4. Atividades</button>
+                        <div class="flex border-b border-slate-200 bg-slate-50 flex-wrap sm:flex-nowrap">
+                            <button onclick="changeDiagram(1)" id="tab-1" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-brand-600 border-b-2 border-brand-600 bg-white transition-all">1. Casos de Uso</button>
+                            <button onclick="changeDiagram(2)" id="tab-2" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">2. Classes</button>
+                            <button onclick="changeDiagram(3)" id="tab-3" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">3. Sequência</button>
+                            <button onclick="changeDiagram(4)" id="tab-4" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">4. Atividades</button>
                         </div>
                         
                         <!-- Tab Content (Images) -->
@@ -460,25 +487,25 @@
         </div>
 
         <!-- Floating Controls -->
-        <div class="absolute bottom-8 right-8 flex gap-3 z-50">
-            <button id="btn-prev" onclick="prevSlide()" class="w-12 h-12 rounded-full bg-white text-slate-600 shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 hover:text-brand-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+        <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 flex gap-3 z-50">
+            <button id="btn-prev" onclick="prevSlide()" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-slate-600 shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 hover:text-brand-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
-            <button id="btn-next" onclick="nextSlide()" class="w-12 h-12 rounded-full bg-brand-600 text-white shadow-lg shadow-brand-500/30 flex items-center justify-center hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            <button id="btn-next" onclick="nextSlide()" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-600 text-white shadow-lg shadow-brand-500/30 flex items-center justify-center hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                 <i class="fa-solid fa-arrow-right"></i>
             </button>
         </div>
 
         <!-- AI Assistant Floating Button -->
-        <div class="absolute bottom-8 left-8 z-50">
-            <button onclick="toggleChat()" class="px-5 h-12 rounded-full bg-slate-900 text-white shadow-lg shadow-slate-900/20 flex items-center gap-3 hover:bg-slate-800 transition-all border border-slate-700">
+        <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 z-50">
+            <button onclick="toggleChat()" class="px-4 md:px-5 w-10 h-10 md:w-auto md:h-12 rounded-full bg-slate-900 text-white shadow-lg shadow-slate-900/20 flex items-center justify-center gap-0 md:gap-3 hover:bg-slate-800 transition-all border border-slate-700">
                 <i class="fa-solid fa-sparkles text-amber-400"></i>
-                <span class="text-sm font-semibold">Tirar Dúvidas com IA</span>
+                <span class="text-sm font-semibold hidden md:inline">Tirar Dúvidas com IA</span>
             </button>
         </div>
 
         <!-- AI Assistant Chat Panel -->
-        <div id="ai-chat-panel" class="chat-widget hidden-chat absolute bottom-24 left-8 w-80 lg:w-96 h-[500px] glass-card rounded-2xl z-50 flex flex-col overflow-hidden border border-slate-200 shadow-2xl">
+        <div id="ai-chat-panel" class="chat-widget hidden-chat absolute bottom-16 left-4 md:bottom-24 md:left-8 w-[calc(100vw-2rem)] md:w-80 lg:w-96 h-[400px] md:h-[500px] glass-card rounded-2xl z-50 flex flex-col overflow-hidden border border-slate-200 shadow-2xl">
             <!-- Header -->
             <div class="bg-slate-900 p-4 flex justify-between items-center">
                 <div class="flex items-center gap-2">
@@ -586,6 +613,11 @@
             slides[currentSlideIndex].classList.add('active');
             document.getElementById(`nav-${currentSlideIndex}`).classList.add('active');
             
+            // Auto-close sidebar on mobile after navigating
+            if(window.innerWidth < 768) {
+                document.getElementById('sidebar').classList.add('-translate-x-full');
+            }
+
             updateUI();
         }
 
@@ -597,6 +629,11 @@
             // Update Progress Bar
             const progress = ((currentSlideIndex + 1) / totalSlides) * 100;
             document.getElementById('progress-bar').style.width = `${progress}%`;
+        }
+
+        // Sidebar Toggle for Mobile
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
         }
 
         // Interactive Diagrams Tab System
