@@ -89,6 +89,17 @@
             transform: translateY(-20px);
         }
 
+        /* Animações de Entrada (Staggered Animations) */
+        .slide-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide.active .slide-element {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Glassmorphism Cards */
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
@@ -198,14 +209,14 @@
                     <div class="absolute bottom-0 left-0 w-72 h-72 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 -translate-x-1/2 translate-y-1/2"></div>
 
                     <div class="flex-1 p-8 md:p-20 flex flex-col justify-center z-10">
-                        <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-600 text-xs font-semibold tracking-wide uppercase mb-6 border border-brand-100 w-max">Apresentação Executiva</span>
-                        <h1 class="text-4xl md:text-7xl font-display font-bold text-dark leading-tight mb-6">
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-600 text-xs font-semibold tracking-wide uppercase mb-6 border border-brand-100 w-max slide-element" style="transition-delay: 0.1s">Apresentação Executiva</span>
+                        <h1 class="text-4xl md:text-7xl font-display font-bold text-dark leading-tight mb-6 slide-element" style="transition-delay: 0.2s">
                             Projeto <br><span class="text-brand-600">Sinfonia do Sabor</span>
                         </h1>
-                        <p class="text-base md:text-lg text-slate-600 mb-10 max-w-xl leading-relaxed">
+                        <p class="text-base md:text-lg text-slate-600 mb-10 max-w-xl leading-relaxed slide-element" style="transition-delay: 0.3s">
                             Plano executivo de transformação digital e implantação de gestão ágil para modernização de atendimento e inteligência de negócios.
                         </p>
-                        <div class="mt-auto grid grid-cols-2 gap-6 border-t border-slate-100 pt-8">
+                        <div class="mt-auto grid grid-cols-2 gap-6 border-t border-slate-100 pt-8 slide-element" style="transition-delay: 0.4s">
                             <div>
                                 <p class="text-xs text-slate-400 uppercase font-semibold mb-1">Equipe Técnica</p>
                                 <p class="text-sm font-medium">Tamires, Lucas, Ronaldo,<br>Thaynan, Edison</p>
@@ -239,35 +250,38 @@
 
             <section class="slide" id="slide-3" data-title="Escopo e MVP">
                 <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
-                    <h2 class="text-3xl font-display font-bold text-dark mb-2">1. Escopo, Requisitos e MVP</h2>
-                    <p class="text-slate-500 mb-8">Pilares fundamentais da modernização da operação.</p>
+                    <h2 class="text-3xl font-display font-bold text-dark mb-2 slide-element">1. Escopo, Requisitos e MVP</h2>
+                    <p class="text-slate-500 mb-8 slide-element" style="transition-delay: 0.1s">Pilares fundamentais da modernização da operação.</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-full pb-8">
                         <!-- Card 1 -->
-                        <div class="glass-card rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-16 h-16 rounded-xl bg-blue-50 text-brand-600 flex items-center justify-center text-3xl mb-6 shadow-sm border border-blue-100">
+                        <div class="glass-card rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:shadow-xl hover:border-brand-200 transition-all duration-300 cursor-pointer group slide-element border border-transparent" style="transition-delay: 0.2s" onclick="openModal('PWA & Autoatendimento', '<p><strong>Recursos Principais do MVP:</strong></p><ul class=\'list-disc pl-5 mt-3 space-y-2\'><li>Acesso imediato via QR Code na mesa (sem necessidade de download).</li><li>Cardápio interativo com personalização de itens (ex: <em>sem cebola, extra queijo</em>).</li><li>Gestão transparente de carrinho e divisão de conta.</li><li>Integração direta com Gateway de Pagamento, acelerando o check-out.</li></ul>')">
+                            <div class="w-16 h-16 rounded-xl bg-blue-50 text-brand-600 flex items-center justify-center text-3xl mb-6 shadow-sm border border-blue-100 group-hover:scale-110 transition-transform">
                                 <i class="fa-solid fa-mobile-screen-button"></i>
                             </div>
                             <h3 class="text-xl font-bold text-dark mb-4">PWA & Autoatendimento</h3>
-                            <p class="text-slate-600 flex-1">Cardápio Digital interativo via QR Code, Gestão de Carrinho, Pedidos direto na mesa e integração fluida com Gateway de Pagamentos.</p>
+                            <p class="text-slate-600 flex-1 text-sm">Cardápio Digital interativo via QR Code, Gestão de Carrinho, Pedidos direto na mesa e integração fluida com Gateway.</p>
+                            <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-500 uppercase flex items-center gap-2"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Mais</div>
                         </div>
                         
                         <!-- Card 2 -->
-                        <div class="glass-card rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-16 h-16 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center text-3xl mb-6 shadow-sm border border-orange-100">
+                        <div class="glass-card rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:shadow-xl hover:border-brand-200 transition-all duration-300 cursor-pointer group slide-element border border-transparent" style="transition-delay: 0.3s" onclick="openModal('Operação & Cozinha (KDS)', '<p><strong>A Revolução na Produção:</strong></p><p class=\'mt-3\'>O <em>Kitchen Display System (KDS)</em> substitui as impressoras de papel e comandas físicas.</p><ul class=\'list-disc pl-5 mt-3 space-y-2\'><li>Recebimento de pedidos em tempo real (via WebSockets).</li><li>Controle de tempo de preparo para evitar gargalos.</li><li>Notificação automática ao celular do cliente quando o prato estiver pronto.</li></ul>')">
+                            <div class="w-16 h-16 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center text-3xl mb-6 shadow-sm border border-orange-100 group-hover:scale-110 transition-transform">
                                 <i class="fa-solid fa-fire-burner"></i>
                             </div>
                             <h3 class="text-xl font-bold text-dark mb-4">Operação & Cozinha</h3>
-                            <p class="text-slate-600 flex-1">Sistema KDS (Kitchen Display System) para sincronização de comandas, redução de erros de produção e otimização do giro das mesas.</p>
+                            <p class="text-slate-600 flex-1 text-sm">Sistema KDS (Kitchen Display System) para sincronização de comandas, redução de erros e giro rápido das mesas.</p>
+                            <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-500 uppercase flex items-center gap-2"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Mais</div>
                         </div>
                         
                         <!-- Card 3 -->
-                        <div class="glass-card rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-16 h-16 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mb-6 shadow-sm border border-emerald-100">
+                        <div class="glass-card rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:shadow-xl hover:border-brand-200 transition-all duration-300 cursor-pointer group slide-element border border-transparent" style="transition-delay: 0.4s" onclick="openModal('Dashboard Gerencial e BI', '<p><strong>Inteligência de Negócios (BI):</strong></p><p class=\'mt-3\'>Uma interface exclusiva para a gestão estratégica.</p><ul class=\'list-disc pl-5 mt-3 space-y-2\'><li>Monitoramento de Ticket Médio em tempo real.</li><li>Identificação de pratos mais vendidos.</li><li>Métricas técnicas (Requisitos Não Funcionais): <strong>99,5% de disponibilidade</strong>, tempo de resposta inferior a <strong>3s</strong> e criptografia de ponta (SSL/TLS).</li></ul>')">
+                            <div class="w-16 h-16 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mb-6 shadow-sm border border-emerald-100 group-hover:scale-110 transition-transform">
                                 <i class="fa-solid fa-chart-pie"></i>
                             </div>
                             <h3 class="text-xl font-bold text-dark mb-4">Dashboard Gerencial</h3>
-                            <p class="text-slate-600 flex-1">Módulo de BI para o Gerente. Requisitos não funcionais rigorosos: disponibilidade de 99,5%, tempo de resposta &lt; 3s e criptografia de ponta.</p>
+                            <p class="text-slate-600 flex-1 text-sm">Módulo de BI para o Gerente com Requisitos Não Funcionais rigorosos e métricas de desempenho de vendas.</p>
+                            <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-500 uppercase flex items-center gap-2"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Mais</div>
                         </div>
                     </div>
                 </div>
@@ -275,12 +289,12 @@
 
             <section class="slide" id="slide-4" data-title="Cronograma e Riscos">
                 <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
-                    <h2 class="text-3xl font-display font-bold text-dark mb-8">2. Cronograma e Riscos Críticos</h2>
+                    <h2 class="text-3xl font-display font-bold text-dark mb-8 slide-element">2. Cronograma e Riscos Críticos</h2>
                     
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 flex-1 pb-8">
                         
                         <!-- Left Col: Numbers -->
-                        <div class="md:col-span-5 glass-card rounded-2xl p-8 flex flex-col justify-center items-center text-center border-t-4 border-t-brand-500">
+                        <div class="md:col-span-5 glass-card rounded-2xl p-8 flex flex-col justify-center items-center text-center border-t-4 border-t-brand-500 slide-element cursor-pointer hover:shadow-lg transition-shadow" style="transition-delay: 0.1s" onclick="openModal('Detalhamento de Orçamento (CAPEX e OPEX)', '<p><strong>CAPEX (Despesas de Capital):</strong><br>Refere-se ao investimento inicial de desenvolvimento, licenças, infraestrutura de implantação e aquisição de hardware (ex: tablets do KDS).</p><p class=\'mt-2 bg-slate-50 p-3 rounded-lg\'><strong>Subtotal:</strong> R$ 42.300,00<br><strong>Contingência de 10%:</strong> R$ 4.230,00<br><strong class=\'text-brand-600\'>Total CAPEX: R$ 46.530,00</strong></p><p class=\'mt-4\'><strong>OPEX (Despesas Operacionais):</strong><br>Custos mensais para manter a solução funcionando (Cloud AWS, licenças mensais, suporte técnico).<br><strong class=\'text-emerald-600\'>Total OPEX: R$ 450,00 / mês</strong></p>')">
                             <div class="text-brand-600 font-display font-black text-8xl leading-none mb-2">16</div>
                             <div class="text-xl font-bold text-dark mb-6">Semanas Totais</div>
                             <p class="text-slate-500 mb-8 pb-8 border-b border-slate-200 w-full">Ciclo completo (Iniciação ao Go-Live)</p>
@@ -302,22 +316,22 @@
                         </div>
 
                         <!-- Right Col: Risks -->
-                        <div class="md:col-span-7 flex flex-col gap-4">
+                        <div class="md:col-span-7 flex flex-col gap-4 slide-element" style="transition-delay: 0.2s">
                             <h3 class="text-lg font-semibold text-slate-700 mb-2 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Plano de Resposta a Riscos</h3>
                             
-                            <div class="bg-white border-l-4 border-red-500 p-5 rounded-r-xl shadow-sm">
-                                <h4 class="font-bold text-dark text-lg mb-1">Expansão de Escopo</h4>
-                                <p class="text-sm text-slate-600"><strong class="text-slate-800">Resposta:</strong> Formalizar e congelar a baseline do MVP. Novas ideias vão para o Backlog futuro.</p>
+                            <div class="bg-white border-l-4 border-red-500 p-5 rounded-r-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer group" onclick="openModal('Risco: Expansão de Escopo', '<p><strong>Severidade:</strong> <span class=\'text-red-500 font-bold\'>ALTA</span> | <strong>Probabilidade:</strong> Média</p><p class=\'mt-3\'>O cliente frequentemente solicita novas funcionalidades durante o desenvolvimento que não estavam previstas inicialmente (Scope Creep).</p><p class=\'mt-3\'><strong>Ação de Mitigação:</strong> Congelar a baseline do MVP em contrato. Toda nova ideia deve ser adicionada pelo Product Owner ao final do <em>Product Backlog</em> para desenvolvimento apenas em versões futuras (Release 2.0).</p>')">
+                                <h4 class="font-bold text-dark text-lg mb-1 flex justify-between items-center">Expansão de Escopo <i class="fa-solid fa-expand text-slate-300 group-hover:text-brand-500 transition-colors"></i></h4>
+                                <p class="text-sm text-slate-600"><strong class="text-slate-800">Resposta Rápida:</strong> Congelar baseline. Novas ideias vão para o Backlog.</p>
                             </div>
                             
-                            <div class="bg-white border-l-4 border-amber-500 p-5 rounded-r-xl shadow-sm">
-                                <h4 class="font-bold text-dark text-lg mb-1">Atraso em Integrações (Gateways)</h4>
-                                <p class="text-sm text-slate-600"><strong class="text-slate-800">Resposta:</strong> Iniciar testes e protótipos cedo (Fail Fast) e garantir plano de fallback manual de operação.</p>
+                            <div class="bg-white border-l-4 border-amber-500 p-5 rounded-r-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer group" onclick="openModal('Risco: Atraso em Integrações', '<p><strong>Severidade:</strong> <span class=\'text-amber-500 font-bold\'>MÉDIA</span> | <strong>Probabilidade:</strong> Alta</p><p class=\'mt-3\'>APIs de terceiros (como gateways de pagamento e WhatsApp) podem apresentar documentação complexa ou instabilidade em ambiente de testes.</p><p class=\'mt-3\'><strong>Ação de Mitigação:</strong> Construir Provas de Conceito (PoCs) e protótipos arquiteturais logo nas Sprints iniciais (Cultura Fail Fast). Ter um plano de contingência para operação manual (pagamento físico) caso o sistema online caia.</p>')">
+                                <h4 class="font-bold text-dark text-lg mb-1 flex justify-between items-center">Atraso em Integrações <i class="fa-solid fa-code-merge text-slate-300 group-hover:text-brand-500 transition-colors"></i></h4>
+                                <p class="text-sm text-slate-600"><strong class="text-slate-800">Resposta Rápida:</strong> Prototipagem antecipada e plano de contingência (fallback).</p>
                             </div>
 
-                            <div class="bg-white border-l-4 border-brand-500 p-5 rounded-r-xl shadow-sm">
-                                <h4 class="font-bold text-dark text-lg mb-1">Resistência da Equipe Operacional</h4>
-                                <p class="text-sm text-slate-600"><strong class="text-slate-800">Resposta:</strong> Treinamento ativo intensivo na Semana 14 e período de operação assistida pós-lançamento.</p>
+                            <div class="bg-white border-l-4 border-brand-500 p-5 rounded-r-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer group" onclick="openModal('Risco: Resistência da Equipe', '<p><strong>Severidade:</strong> <span class=\'text-brand-500 font-bold\'>MÉDIA</span> | <strong>Probabilidade:</strong> Média</p><p class=\'mt-3\'>Garçons e cozinheiros habituados ao processo manual podem boicotar ou subutilizar o sistema KDS e PWA devido a dificuldades tecnológicas.</p><p class=\'mt-3\'><strong>Ação de Mitigação:</strong> Envolver líderes da operação desde as Sprint Reviews. Realizar treinamento ativo intensivo e prático na Semana 14. Garantir suporte técnico presencial nas primeiras 48 horas de lançamento (Go-Live).</p>')">
+                                <h4 class="font-bold text-dark text-lg mb-1 flex justify-between items-center">Resistência da Equipe <i class="fa-solid fa-users-slash text-slate-300 group-hover:text-brand-500 transition-colors"></i></h4>
+                                <p class="text-sm text-slate-600"><strong class="text-slate-800">Resposta Rápida:</strong> Treinamento prático e suporte in-loco no lançamento.</p>
                             </div>
                         </div>
                     </div>
@@ -326,10 +340,10 @@
 
             <section class="slide" id="slide-5" data-title="Metodologia Ágil">
                 <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
-                    <h2 class="text-3xl font-display font-bold text-dark mb-2">3. Metodologia Ágil (Scrum)</h2>
-                    <p class="text-slate-500 mb-8">Execução do desenvolvimento do produto digital.</p>
+                    <h2 class="text-3xl font-display font-bold text-dark mb-2 slide-element">3. Metodologia Ágil (Scrum)</h2>
+                    <p class="text-slate-500 mb-8 slide-element" style="transition-delay: 0.1s">Execução do desenvolvimento do produto digital.</p>
                     
-                    <div class="glass-card rounded-2xl flex-1 flex flex-col md:flex-row overflow-hidden border border-slate-200">
+                    <div class="glass-card rounded-2xl flex-1 flex flex-col md:flex-row overflow-hidden border border-slate-200 slide-element" style="transition-delay: 0.2s">
                         <div class="md:w-1/3 bg-slate-50 p-8 border-r border-slate-200 flex flex-col justify-center">
                             <div class="w-20 h-20 bg-brand-600 text-white rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg shadow-brand-500/30">
                                 <i class="fa-solid fa-rotate"></i>
@@ -347,22 +361,57 @@
                                 <p class="text-slate-700 relative z-10">O ciclo de desenvolvimento (Semanas 5 a 11) será dividido em exatas <strong>3 Sprints de 2 semanas cada</strong>, obedecendo ao limite oficial do <em>Scrum Guide</em> e garantindo entregas parciais rápidas.</p>
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="border border-slate-100 p-4 rounded-lg hover:shadow-md transition-shadow bg-white">
-                                    <div class="text-brand-500 font-bold mb-1"><i class="fa-solid fa-users fa-fw"></i> Daily Scrum</div>
-                                    <p class="text-xs text-slate-500">Alinhamentos rápidos de 15 min.</p>
-                                </div>
-                                <div class="border border-slate-100 p-4 rounded-lg hover:shadow-md transition-shadow bg-white">
-                                    <div class="text-brand-500 font-bold mb-1"><i class="fa-solid fa-list-check fa-fw"></i> Sprint Planning</div>
-                                    <p class="text-xs text-slate-500">Definição da meta quinzenal.</p>
-                                </div>
-                                <div class="border border-slate-100 p-4 rounded-lg hover:shadow-md transition-shadow bg-white">
-                                    <div class="text-brand-500 font-bold mb-1"><i class="fa-solid fa-magnifying-glass fa-fw"></i> Sprint Review</div>
-                                    <p class="text-xs text-slate-500">Demonstração das features ao PO.</p>
-                                </div>
-                                <div class="border border-slate-100 p-4 rounded-lg hover:shadow-md transition-shadow bg-white">
-                                    <div class="text-brand-500 font-bold mb-1"><i class="fa-solid fa-arrow-trend-up fa-fw"></i> Retrospective</div>
-                                    <p class="text-xs text-slate-500">Melhoria contínua da equipe.</p>
+                            <!-- Interactive Scrum Timeline -->
+                            <div class="relative w-full mt-2 md:mt-6">
+                                <!-- Connecting Line -->
+                                <div class="absolute left-[22px] md:left-6 top-6 bottom-6 md:bottom-auto md:top-[22px] w-1 md:w-[calc(100%-3rem)] h-auto md:h-1 bg-slate-200 z-0 rounded-full"></div>
+                                
+                                <div class="flex flex-col md:flex-row justify-between relative z-10 gap-6 md:gap-0">
+                                    
+                                    <!-- Node 1 -->
+                                    <div class="flex md:flex-col items-center md:text-center group cursor-pointer hover:-translate-y-1 transition-transform" onclick="openModal('Sprint Planning', '<p><strong>Duração:</strong> Até 4h para uma Sprint de 2 semanas.</p><p class=\'mt-3\'><strong>Participantes:</strong> Scrum Team completo (Gerente como PO e Desenvolvedores).</p><p class=\'mt-3\'><strong>Objetivo:</strong> Definir o que tem maior valor de negócio e planejar <em>como</em> construir. O resultado é o Sprint Backlog congelado da quinzena.</p>')">
+                                        <div class="w-12 h-12 rounded-full bg-white border-4 border-brand-500 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors shadow-md z-10 flex-shrink-0">
+                                            <i class="fa-solid fa-list-check"></i>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:mt-3">
+                                            <p class="font-bold text-dark text-sm group-hover:text-brand-600 transition-colors">1. Planning</p>
+                                            <p class="text-[10px] font-semibold text-brand-500 uppercase mt-1 flex items-center md:justify-center gap-1 opacity-80 group-hover:opacity-100"><i class="fa-solid fa-expand"></i> Detalhes</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Node 2 -->
+                                    <div class="flex md:flex-col items-center md:text-center group cursor-pointer hover:-translate-y-1 transition-transform" onclick="openModal('Daily Scrum', '<p><strong>Duração:</strong> Exatos 15 minutos (Time-boxed).</p><p class=\'mt-3\'><strong>Participantes:</strong> Apenas os Desenvolvedores.</p><p class=\'mt-3\'><strong>Objetivo:</strong> Reunião diária de sincronização. A equipe discute o progresso em direção à meta da Sprint e identifica rapidamente impedimentos ou bloqueios técnicos.</p>')">
+                                        <div class="w-12 h-12 rounded-full bg-white border-4 border-brand-400 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-white transition-colors shadow-md z-10 flex-shrink-0">
+                                            <i class="fa-solid fa-users"></i>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:mt-3">
+                                            <p class="font-bold text-dark text-sm group-hover:text-brand-500 transition-colors">2. Daily</p>
+                                            <p class="text-[10px] font-semibold text-brand-500 uppercase mt-1 flex items-center md:justify-center gap-1 opacity-80 group-hover:opacity-100"><i class="fa-solid fa-expand"></i> Detalhes</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Node 3 -->
+                                    <div class="flex md:flex-col items-center md:text-center group cursor-pointer hover:-translate-y-1 transition-transform" onclick="openModal('Sprint Review', '<p><strong>Duração:</strong> Até 2h.</p><p class=\'mt-3\'><strong>Participantes:</strong> Scrum Team e Stakeholders.</p><p class=\'mt-3\'><strong>Objetivo:</strong> Demonstração do incremento do produto (ex: software rodando na cozinha). O Product Owner avalia se a entrega atende aos critérios de aceitação.</p>')">
+                                        <div class="w-12 h-12 rounded-full bg-white border-4 border-amber-400 flex items-center justify-center text-amber-500 group-hover:bg-amber-400 group-hover:text-white transition-colors shadow-md z-10 flex-shrink-0">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:mt-3">
+                                            <p class="font-bold text-dark text-sm group-hover:text-amber-500 transition-colors">3. Review</p>
+                                            <p class="text-[10px] font-semibold text-amber-500 uppercase mt-1 flex items-center md:justify-center gap-1 opacity-80 group-hover:opacity-100"><i class="fa-solid fa-expand"></i> Detalhes</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Node 4 -->
+                                    <div class="flex md:flex-col items-center md:text-center group cursor-pointer hover:-translate-y-1 transition-transform" onclick="openModal('Sprint Retrospective', '<p><strong>Duração:</strong> Até 1h30.</p><p class=\'mt-3\'><strong>Participantes:</strong> Apenas o Scrum Team.</p><p class=\'mt-3\'><strong>Objetivo:</strong> Reunião final do ciclo focada em melhoria contínua. A equipe discute o que funcionou bem e o que precisa ser ajustado nos processos e ferramentas.</p>')">
+                                        <div class="w-12 h-12 rounded-full bg-white border-4 border-emerald-400 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-400 group-hover:text-white transition-colors shadow-md z-10 flex-shrink-0">
+                                            <i class="fa-solid fa-arrow-trend-up"></i>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:mt-3">
+                                            <p class="font-bold text-dark text-sm group-hover:text-emerald-500 transition-colors">4. Retro</p>
+                                            <p class="text-[10px] font-semibold text-emerald-500 uppercase mt-1 flex items-center md:justify-center gap-1 opacity-80 group-hover:opacity-100"><i class="fa-solid fa-expand"></i> Detalhes</p>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -372,83 +421,93 @@
 
             <section class="slide" id="slide-6" data-title="Business Model Canvas">
                 <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
-                    <h2 class="text-3xl font-display font-bold text-dark mb-6">4. Business Model Canvas</h2>
+                    <h2 class="text-3xl font-display font-bold text-dark mb-6 slide-element">4. Business Model Canvas</h2>
                     
-                    <div class="flex-1 glass-card p-6 rounded-2xl">
+                    <div class="flex-1 glass-card p-6 rounded-2xl slide-element" style="transition-delay: 0.1s">
                         <!-- Custom grid simulating the real BMC layout -->
                         <div class="bmc-grid h-full">
                             <!-- Column 1 -->
-                            <div class="bmc-item" style="grid-column: 1; grid-row: 1 / span 2;">
-                                <div class="bmc-header"><i class="fa-solid fa-handshake"></i> Parcerias Principais</div>
+                            <div class="bmc-item hover:border-brand-300 hover:shadow-md transition-all cursor-pointer group relative" style="grid-column: 1; grid-row: 1 / span 2;" onclick="openModal('Parcerias Principais', '<ul class=\'list-disc pl-5 space-y-3\'><li><strong>Gateways de pagamento:</strong> Integração com provedores como Mercado Pago ou Stripe para assegurar a liquidação financeira sem falhas.</li><li><strong>Provedores de Cloud (AWS/Azure):</strong> Essencial para manter a infraestrutura disponível 99,5% do tempo.</li><li><strong>Serviços de Mensageria (WhatsApp API):</strong> Para notificar o cliente quando o prato estiver finalizado e enviar cupons de fidelidade.</li></ul>')">
+                                <div class="bmc-header group-hover:text-brand-700 transition-colors"><i class="fa-solid fa-handshake"></i> Parcerias Principais</div>
                                 <div class="bmc-content">
                                     <p>• Gateways de pagamento (Mercado Pago)</p>
                                     <p>• Provedor Cloud (AWS/Azure)</p>
                                     <p>• Fornecedor API WhatsApp</p>
                                 </div>
+                                <div class="mt-auto pt-2 text-[10px] font-semibold text-slate-400 group-hover:text-brand-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-hand-pointer"></i> Clique</div>
                             </div>
                             <!-- Column 2 -->
-                            <div class="bmc-item" style="grid-column: 2; grid-row: 1;">
-                                <div class="bmc-header"><i class="fa-solid fa-clipboard-check"></i> Atividades Chave</div>
+                            <div class="bmc-item hover:border-brand-300 hover:shadow-md transition-all cursor-pointer group" style="grid-column: 2; grid-row: 1;" onclick="openModal('Atividades Chave', '<ul class=\'list-disc pl-5 space-y-3\'><li><strong>Desenvolvimento e Manutenção:</strong> Sustentação da plataforma PWA e estabilidade dos WebSockets.</li><li><strong>Integração Segura:</strong> Monitorar segurança dos pagamentos e conformidade com a LGPD.</li><li><strong>Treinamento de Equipe:</strong> Educação contínua dos garçons e cozinheiros para uso do KDS.</li></ul>')">
+                                <div class="bmc-header group-hover:text-brand-700 transition-colors"><i class="fa-solid fa-clipboard-check"></i> Atividades Chave</div>
                                 <div class="bmc-content">
                                     <p>• Manutenção do PWA</p>
                                     <p>• Integração segura</p>
                                 </div>
+                                <div class="mt-auto pt-2 text-[10px] font-semibold text-slate-400 group-hover:text-brand-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-hand-pointer"></i> Clique</div>
                             </div>
-                            <div class="bmc-item" style="grid-column: 2; grid-row: 2;">
-                                <div class="bmc-header"><i class="fa-solid fa-server"></i> Recursos Chave</div>
+                            <div class="bmc-item hover:border-brand-300 hover:shadow-md transition-all cursor-pointer group" style="grid-column: 2; grid-row: 2;" onclick="openModal('Recursos Chave', '<ul class=\'list-disc pl-5 space-y-3\'><li><strong>Tecnologia:</strong> Servidores em nuvem, Repositórios de código, Licenças de Banco de Dados.</li><li><strong>Hardware Físico:</strong> Tablets para visualização da produção na cozinha (KDS), Displays de QR Code nas mesas.</li><li><strong>Capital Humano:</strong> Equipe de desenvolvimento ágil e Gerente como Product Owner.</li></ul>')">
+                                <div class="bmc-header group-hover:text-brand-700 transition-colors"><i class="fa-solid fa-server"></i> Recursos Chave</div>
                                 <div class="bmc-content">
                                     <p>• Plataforma PWA/Backoffice</p>
                                     <p>• Infraestrutura Nuvem</p>
                                 </div>
+                                <div class="mt-auto pt-2 text-[10px] font-semibold text-slate-400 group-hover:text-brand-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-hand-pointer"></i> Clique</div>
                             </div>
                             <!-- Column 3 (Center) -->
-                            <div class="bmc-item bg-brand-50 border-brand-200" style="grid-column: 3; grid-row: 1 / span 2;">
+                            <div class="bmc-item bg-brand-50 border-brand-200 hover:shadow-lg transition-all cursor-pointer group relative" style="grid-column: 3; grid-row: 1 / span 2;" onclick="openModal('Proposta de Valor', '<p>O Sinfonia do Sabor entrega um ecossistema completo conectando o cliente à cozinha em milissegundos.</p><br><p><strong>Para o Consumidor (B2C):</strong><br>O fim da frustração. Sem espera para chamar garçom, cardápio visual e controle absoluto sobre a customização do pedido e pagamento.</p><br><p><strong>Para a Gestão e Operação (B2B):</strong><br>Operação aprimorada com visão ampla dos dados. O KDS corta o ruído e perda de comandas na cozinha, enquanto o BI orienta sobre quais pratos dão mais lucro, permitindo estratégias dinâmicas de Upsell.</p>')">
+                                <div class="absolute -top-3 -right-3 w-8 h-8 bg-brand-500 rounded-full text-white flex items-center justify-center shadow-lg animate-bounce"><i class="fa-solid fa-star text-xs"></i></div>
                                 <div class="bmc-header text-brand-700"><i class="fa-solid fa-gem text-amber-500"></i> Proposta de Valor</div>
                                 <div class="bmc-content text-slate-700 font-medium">
                                     <p class="mb-2"><strong>Cliente:</strong> Atendimento ágil, sem filas, zero erros via autoatendimento.</p>
                                     <p class="mb-2"><strong>Operação:</strong> Cozinha sincronizada via KDS.</p>
                                     <p><strong>Gestão:</strong> Decisões baseadas em BI real-time.</p>
                                 </div>
+                                <div class="mt-auto pt-2 text-[10px] font-bold text-brand-600 uppercase flex items-center gap-1"><i class="fa-solid fa-expand"></i> Ver Visão Geral</div>
                             </div>
                             <!-- Column 4 -->
-                            <div class="bmc-item" style="grid-column: 4; grid-row: 1;">
-                                <div class="bmc-header"><i class="fa-solid fa-heart"></i> Relacionamento</div>
+                            <div class="bmc-item hover:border-brand-300 hover:shadow-md transition-all cursor-pointer group" style="grid-column: 4; grid-row: 1;" onclick="openModal('Relacionamento com Cliente', '<ul class=\'list-disc pl-5 space-y-3\'><li><strong>Self-Service Assitido:</strong> Autonomia total do cliente, mas com garçons focados na hospitalidade (tirar dúvidas, servir) em vez de anotar pedidos.</li><li><strong>Fidelização:</strong> Acúmulo de pontos vinculados ao número de celular, incentivando retorno.</li><li><strong>Engajamento:</strong> Envio de promoções automatizadas pelo WhatsApp.</li></ul>')">
+                                <div class="bmc-header group-hover:text-brand-700 transition-colors"><i class="fa-solid fa-heart"></i> Relacionamento</div>
                                 <div class="bmc-content">
                                     <p>• Self-service nativo</p>
                                     <p>• Prog. Fidelidade</p>
                                     <p>• Notificações WPP</p>
                                 </div>
+                                <div class="mt-auto pt-2 text-[10px] font-semibold text-slate-400 group-hover:text-brand-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-hand-pointer"></i> Clique</div>
                             </div>
-                            <div class="bmc-item" style="grid-column: 4; grid-row: 2;">
-                                <div class="bmc-header"><i class="fa-solid fa-truck-fast"></i> Canais</div>
+                            <div class="bmc-item hover:border-brand-300 hover:shadow-md transition-all cursor-pointer group" style="grid-column: 4; grid-row: 2;" onclick="openModal('Canais de Distribuição', '<ul class=\'list-disc pl-5 space-y-3\'><li><strong>Canal Direto (PWA):</strong> Interface Web otimizada e responsiva aberta através da leitura do QR Code posicionado fisicamente no restaurante.</li><li><strong>Touchpoints Físicos:</strong> Displays digitais KDS nas áreas produtivas e balcão de retirada.</li></ul>')">
+                                <div class="bmc-header group-hover:text-brand-700 transition-colors"><i class="fa-solid fa-truck-fast"></i> Canais</div>
                                 <div class="bmc-content">
                                     <p>• Web App via QR Code</p>
                                     <p>• KDS / Tablets</p>
                                 </div>
+                                <div class="mt-auto pt-2 text-[10px] font-semibold text-slate-400 group-hover:text-brand-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-hand-pointer"></i> Clique</div>
                             </div>
                             <!-- Column 5 -->
-                            <div class="bmc-item" style="grid-column: 5; grid-row: 1 / span 2;">
-                                <div class="bmc-header"><i class="fa-solid fa-users"></i> Segmentos</div>
+                            <div class="bmc-item hover:border-brand-300 hover:shadow-md transition-all cursor-pointer group" style="grid-column: 5; grid-row: 1 / span 2;" onclick="openModal('Segmentos de Clientes', '<p><strong>Consumidores Finais (B2C):</strong></p><ul class=\'list-disc pl-5 mb-3\'><li>Jovens e adultos adeptos da tecnologia.</li><li>Pessoas buscando agilidade no horário de almoço corporativo.</li><li>Famílias que desejam evitar o estresse de filas e erros de pedido.</li></ul><p><strong>Usuários Internos (B2B):</strong></p><ul class=\'list-disc pl-5\'><li>Gestor/Dono do Restaurante.</li><li>Cozinheiros e Chefs.</li><li>Garçons.</li></ul>')">
+                                <div class="bmc-header group-hover:text-brand-700 transition-colors"><i class="fa-solid fa-users"></i> Segmentos</div>
                                 <div class="bmc-content">
                                     <p><strong>B2C:</strong> Clientes frequentes e novos.</p>
                                     <p><strong>B2B:</strong> Gestão, Garçons e Cozinheiros.</p>
                                 </div>
+                                <div class="mt-auto pt-2 text-[10px] font-semibold text-slate-400 group-hover:text-brand-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-hand-pointer"></i> Clique</div>
                             </div>
                             <!-- Bottom Row -->
-                            <div class="bmc-item" style="grid-column: 1 / span 2; grid-row: 3;">
-                                <div class="bmc-header text-red-600"><i class="fa-solid fa-money-bill-wave"></i> Estrutura de Custos</div>
+                            <div class="bmc-item hover:border-red-300 hover:shadow-md transition-all cursor-pointer group" style="grid-column: 1 / span 2; grid-row: 3;" onclick="openModal('Estrutura de Custos', '<p><strong>CAPEX (Total R$ 46.530,00):</strong> Custo total engloba linha base técnica, hardwares, e 10% de margem de risco.</p><br><p><strong>OPEX (R$ 450,00/mês):</strong> Despesa fixa de manutenção da infraestrutura em nuvem, taxas de uso de licenças API e banco de dados gerenciado. Vale ressaltar que os provedores de Gateway geralmente cobram taxa percentual por transação, que fica embutida no preço do prato.</p>')">
+                                <div class="bmc-header text-red-600 group-hover:text-red-700 transition-colors"><i class="fa-solid fa-money-bill-wave"></i> Estrutura de Custos</div>
                                 <div class="bmc-content flex flex-col sm:flex-row sm:justify-between px-2 gap-2 sm:gap-0">
                                     <span><strong>CAPEX:</strong> R$ 46.530,00</span>
                                     <span><strong>OPEX:</strong> R$ 450,00/mês</span>
                                 </div>
+                                <div class="mt-auto pt-2 px-2 text-[10px] font-semibold text-slate-400 group-hover:text-red-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-hand-pointer"></i> Clique</div>
                             </div>
-                            <div class="bmc-item" style="grid-column: 3 / span 3; grid-row: 3;">
-                                <div class="bmc-header text-emerald-600"><i class="fa-solid fa-sack-dollar"></i> Fontes de Receita</div>
+                            <div class="bmc-item hover:border-emerald-300 hover:shadow-md transition-all cursor-pointer group" style="grid-column: 3 / span 3; grid-row: 3;" onclick="openModal('Fontes de Receita', '<ul class=\'list-disc pl-5 space-y-3\'><li><strong>Aumento do Ticket Médio (Upsell Automatizado):</strong> O aplicativo sugere sobremesas e bebidas no fechamento do carrinho.</li><li><strong>Escalabilidade de Mesas:</strong> Otimização do tempo de atendimento faz as mesas girarem mais rápido, aumentando o volume de vendas no mesmo período.</li><li><strong>Retenção Aumentada:</strong> Programa de fidelidade digital encoraja a volta dos clientes, sustentando a receita previsível.</li></ul>')">
+                                <div class="bmc-header text-emerald-600 group-hover:text-emerald-700 transition-colors"><i class="fa-solid fa-sack-dollar"></i> Fontes de Receita</div>
                                 <div class="bmc-content flex gap-4">
                                     <p>1. Aumento do Ticket Médio (Upsell)</p>
                                     <p>2. Retenção (Fidelidade)</p>
                                     <p>3. Giro mais rápido das mesas</p>
                                 </div>
+                                <div class="mt-auto pt-2 text-[10px] font-semibold text-slate-400 group-hover:text-emerald-500 uppercase flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-solid fa-hand-pointer"></i> Clique</div>
                             </div>
                         </div>
                     </div>
@@ -457,9 +516,9 @@
 
             <section class="slide" id="slide-7" data-title="Modelagem do Sistema">
                 <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
-                    <h2 class="text-3xl font-display font-bold text-dark mb-4">5. Modelagem e Arquitetura (UML)</h2>
+                    <h2 class="text-3xl font-display font-bold text-dark mb-4 slide-element">5. Modelagem e UML</h2>
                     
-                    <div class="glass-card rounded-2xl flex-1 flex flex-col overflow-hidden border border-slate-200">
+                    <div class="glass-card rounded-2xl flex-1 flex flex-col overflow-hidden border border-slate-200 slide-element" style="transition-delay: 0.1s">
                         <!-- Tab Headers -->
                         <div class="flex border-b border-slate-200 bg-slate-50 flex-wrap sm:flex-nowrap">
                             <button onclick="changeDiagram(1)" id="tab-1" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-brand-600 border-b-2 border-brand-600 bg-white transition-all">1. Casos de Uso</button>
@@ -479,6 +538,48 @@
                                     <span id="diagram-caption" class="bg-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm">Visão macro das interações entre os atores (Nível Zero)</span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NOVO SLIDE: ARQUITETURA -->
+            <section class="slide" id="slide-8" data-title="Stack Tecnológico">
+                <div class="w-full max-w-5xl h-auto min-h-full flex flex-col">
+                    <h2 class="text-3xl font-display font-bold text-dark mb-2 slide-element">6. Stack Tecnológico e Arquitetura</h2>
+                    <p class="text-slate-500 mb-8 slide-element" style="transition-delay: 0.1s">Base tecnológica garantindo alta disponibilidade (99,5%) e performance (Rnf).</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 flex-1 pb-8">
+                        <!-- Frontend -->
+                        <div class="glass-card rounded-2xl p-6 flex flex-col slide-element hover:-translate-y-2 hover:shadow-xl hover:border-orange-200 border border-transparent transition-all cursor-pointer group" style="transition-delay: 0.2s" onclick="openModal('Frontend & PWA', '<p>Construção baseada em <strong>Progressive Web App (PWA)</strong> via React.js ou Vue.js, servindo uma <em>Single Page Application (SPA)</em> extremamente rápida.</p><p class=\'mt-3\'>O acesso via QR Code dispensa a fricção de instalação pelas Lojas de Aplicativos (App Store/Google Play), democratizando o acesso e acelerando a adoção pelo cliente.</p>')">
+                            <i class="fa-brands fa-html5 text-4xl text-orange-500 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                            <h3 class="text-lg font-bold text-dark mb-2">Frontend PWA</h3>
+                            <p class="text-sm text-slate-600 flex-1">Interface responsiva via QR Code focada em conversão e usabilidade rápida.</p>
+                            <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-500 uppercase flex items-center gap-1"><i class="fa-solid fa-plus"></i> Detalhes</div>
+                        </div>
+                        
+                        <!-- Backend -->
+                        <div class="glass-card rounded-2xl p-6 flex flex-col slide-element hover:-translate-y-2 hover:shadow-xl hover:border-blue-200 border border-transparent transition-all cursor-pointer group" style="transition-delay: 0.3s" onclick="openModal('Backend (API REST)', '<p>A lógica de negócios será isolada em uma arquitetura de microsserviços ou monólito modular, utilizando padrão <strong>RESTful</strong>. Retorno padronizado em formato <strong>JSON</strong>.</p><p class=\'mt-3\'>A camada de segurança usará criptografia HTTPS (TLS/SSL) e autenticação baseada em <strong>JWT (JSON Web Tokens)</strong> para acessos gerenciais e do KDS.</p>')">
+                            <i class="fa-solid fa-server text-4xl text-blue-500 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                            <h3 class="text-lg font-bold text-dark mb-2">API RESTful</h3>
+                            <p class="text-sm text-slate-600 flex-1">Backend seguro comunicando em JSON, orquestrando pagamentos e regras de negócio.</p>
+                            <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-500 uppercase flex items-center gap-1"><i class="fa-solid fa-plus"></i> Detalhes</div>
+                        </div>
+
+                        <!-- Tempo Real -->
+                        <div class="glass-card rounded-2xl p-6 flex flex-col slide-element hover:-translate-y-2 hover:shadow-xl hover:border-amber-200 border border-transparent transition-all cursor-pointer group" style="transition-delay: 0.4s" onclick="openModal('WebSockets (Tempo Real)', '<p>Crucial para a operação, a adoção de <strong>WebSockets</strong> (ex: Socket.io ou SignalR) garante conexão persistente e bidirecional.</p><p class=\'mt-3\'><strong>Ação:</strong> Quando o cliente efetua o pagamento na mesa, o pedido desponta instantaneamente no tablet da cozinha (KDS) sem necessidade de atualizar a tela, reduzindo drasticamente o tempo de atendimento.</p>')">
+                            <i class="fa-solid fa-bolt text-4xl text-amber-500 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                            <h3 class="text-lg font-bold text-dark mb-2">WebSockets</h3>
+                            <p class="text-sm text-slate-600 flex-1">Comunicação bidirecional para atualizar pedidos no KDS em tempo real (Real-time).</p>
+                            <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-500 uppercase flex items-center gap-1"><i class="fa-solid fa-plus"></i> Detalhes</div>
+                        </div>
+
+                        <!-- Banco de Dados -->
+                        <div class="glass-card rounded-2xl p-6 flex flex-col slide-element hover:-translate-y-2 hover:shadow-xl hover:border-emerald-200 border border-transparent transition-all cursor-pointer group" style="transition-delay: 0.5s" onclick="openModal('Modelagem de Dados', '<p>Sistema utilizará Banco de Dados Relacional estruturado (como PostgreSQL) para assegurar garantias ACID (Atomicidade, Consistência, Isolamento e Durabilidade) em dados financeiros.</p><p class=\'mt-3\'><strong>Entidades Críticas do Domínio:</strong><ul class=\'list-disc pl-5 mt-2\'><li><strong>Usuario</strong></li><li><strong>Mesa</strong></li><li><strong>Produto</strong></li><li><strong>Pedido e ItemPedido</strong></li><li><strong>Pagamento</strong></li></ul></p>')">
+                            <i class="fa-solid fa-database text-4xl text-emerald-500 mb-4 group-hover:scale-110 transition-transform origin-left"></i>
+                            <h3 class="text-lg font-bold text-dark mb-2">Banco de Dados</h3>
+                            <p class="text-sm text-slate-600 flex-1">Estrutura relacional robusta (Usuario, Mesa, Produto, Pedido, Pagamento).</p>
+                            <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-500 uppercase flex items-center gap-1"><i class="fa-solid fa-plus"></i> Detalhes</div>
                         </div>
                     </div>
                 </div>
@@ -544,6 +645,22 @@
             </div>
         </div>
 
+        <!-- Modal de Informações Detalhadas (Novo Recurso Interativo) -->
+        <div id="info-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6">
+            <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop" onclick="closeModal()"></div>
+            <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative z-10 transform scale-95 opacity-0 transition-all duration-300 flex flex-col" id="modal-content-wrapper">
+                <div class="sticky top-0 bg-white/95 backdrop-blur-md border-b border-slate-100 p-5 sm:p-6 flex justify-between items-center z-20 rounded-t-3xl">
+                    <h3 id="modal-title" class="text-xl sm:text-2xl font-display font-bold text-dark">Título</h3>
+                    <button onclick="closeModal()" class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition-colors flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="modal-body" class="p-5 sm:p-8 text-slate-600 space-y-4 text-sm sm:text-base leading-relaxed">
+                    <!-- Conteúdo injetado via JS -->
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script>
@@ -569,7 +686,20 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'Enter') nextSlide();
                 if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'Escape') closeModal();
             });
+            
+            // Swipe gestures setup para Mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const container = document.getElementById('slides-container');
+            
+            container.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+            container.addEventListener('touchend', e => { 
+                touchEndX = e.changedTouches[0].screenX; 
+                if (touchEndX < touchStartX - 50) nextSlide();
+                if (touchEndX > touchStartX + 50) prevSlide();
+            }, {passive: true});
         }
 
         // Build Sidebar Navigation dynamically
@@ -634,6 +764,30 @@
         // Sidebar Toggle for Mobile
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        }
+
+        // Funções do Modal Interativo
+        function openModal(title, contentHTML) {
+            const modal = document.getElementById('info-modal');
+            const backdrop = document.getElementById('modal-backdrop');
+            const contentWrapper = document.getElementById('modal-content-wrapper');
+            
+            document.getElementById('modal-title').innerHTML = title;
+            document.getElementById('modal-body').innerHTML = contentHTML;
+
+            modal.classList.remove('hidden');
+            // Force reflow para garantir a animação
+            void modal.offsetWidth;
+            
+            backdrop.classList.remove('opacity-0');
+            contentWrapper.classList.remove('scale-95', 'opacity-0');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('info-modal');
+            document.getElementById('modal-backdrop').classList.add('opacity-0');
+            document.getElementById('modal-content-wrapper').classList.add('scale-95', 'opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
         // Interactive Diagrams Tab System
