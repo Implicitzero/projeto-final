@@ -1,0 +1,301 @@
+body {
+    background-color: #f8fafc;
+    overflow: hidden; /* Prevent native scrolling, handled by JS */
+}
+
+/* Custom Scrollbar for inner elements if needed */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Slide Transitions */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 6rem 1rem 8rem;
+    touch-action: pan-y;
+}
+
+@media (min-width: 768px) {
+    .slide {
+        align-items: center;
+        padding: 0;
+    }
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    z-index: 10;
+}
+
+.slide.previous {
+    transform: translateY(-20px);
+}
+
+/* Animações de Entrada (Staggered Animations) */
+.slide-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.slide.active .slide-element {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+    min-width: 0;
+}
+
+/* Canvas Grid Layout */
+.bmc-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: auto;
+}
+@media (min-width: 1024px) {
+    .bmc-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto auto auto;
+        height: 100%;
+    }
+}
+.bmc-item {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+.bmc-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+.bmc-content {
+    font-size: 0.75rem;
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* Navigation Sidebar Hover */
+.nav-item { transition: all 0.2s; border-left: 3px solid transparent; }
+.nav-item:hover { background-color: #f1f5f9; color: #2563eb; }
+.nav-item.active { border-left-color: #2563eb; background-color: #eff6ff; color: #1d4ed8; font-weight: 600; }
+.nav-item:hover { background-color: #f1f5f9; color: #2563eb; }
+.nav-item.active { border-left-color: #2563eb; background-color: #eff6ff; color: #1d4ed8; font-weight: 600; }
+
+/* Pattern background */
+.bg-pattern {
+    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.chat-widget {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: bottom right;
+}
+.chat-widget.hidden-chat {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    pointer-events: none;
+}
+
+/* Typing animation */
+.typing-dot {
+    animation: typing 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+@keyframes typing {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+@media (max-width: 767px) {
+    .slide {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .glass-card {
+        width: 100%;
+    }
+}
+
+.chart-block {
+    margin-top: 1.5rem;
+}
+.chart-container {
+    width: 100%;
+    min-height: 260px;
+    border-radius: 1.25rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.chart-note {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #475569;
+}
+.chart-grid {
+    display: grid;
+    gap: 1rem;
+}
+.chart-bar-row {
+    display: grid;
+    grid-template-columns: minmax(5rem, 1fr) 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+}
+.chart-bar-label {
+    font-size: 0.85rem;
+    color: #334155;
+}
+.chart-bar {
+    height: 1rem;
+    background: #e2e8f0;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+.chart-bar-fill {
+    height: 100%;
+    border-radius: 9999px;
+}
+.chart-bar-value {
+    font-size: 0.85rem;
+    color: #475569;
+    white-space: nowrap;
+}
+.chart-donut-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+}
+.chart-donut-svg {
+    width: 100%;
+    height: 100%;
+}
+.chart-donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #1e3a8a;
+}
+.diagram-caption-toggle {
+    cursor: zoom-in;
+    transition: cursor 0.2s ease;
+}
+#diagram-image {
+    transition: all 0.3s ease;
+    cursor: zoom-in;
+}
+#diagram-viewer {
+    cursor: zoom-in;
+}
+
+/* Lightbox Modal Styles */
+.diagram-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+    backdrop-filter: blur(2px);
+}
+
+.diagram-modal-overlay.hidden {
+    display: none;
+}
+
+.diagram-modal-content {
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+    animation: zoomIn 0.3s ease forwards;
+}
+
+.diagram-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.chart-legend {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+.chart-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #475569;
+}
+.chart-legend-swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    display: inline-block;
+}
+.chart-timeline .chart-bar {
+    background: #e2e8f0;
+}

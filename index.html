@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinfonia do Sabor - Apresentação Executiva</title>
+    <title>Sinfonia do Sabor - Apresentação </title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,126 +39,8 @@
             }
         }
     </script>
-    
-    <style>
-        body {
-            background-color: #f8fafc;
-            overflow: hidden; /* Prevent native scrolling, handled by JS */
-        }
-        
-        /* Custom Scrollbar for inner elements if needed */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Slide Transitions */
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding-bottom: 5rem;
-        }
-
-        @media (min-width: 768px) {
-            .slide {
-                align-items: center;
-                padding-bottom: 0;
-            }
-        }
-
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            z-index: 10;
-        }
-        
-        .slide.previous {
-            transform: translateY(-20px);
-        }
-
-        /* Animações de Entrada (Staggered Animations) */
-        .slide-element {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .slide.active .slide-element {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Glassmorphism Cards */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
-        }
-
-        /* Canvas Grid Layout */
-        .bmc-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            height: auto;
-        }
-        @media (min-width: 1024px) {
-            .bmc-grid {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                grid-template-rows: auto auto auto;
-                height: 100%;
-            }
-        }
-        .bmc-item { @apply bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col; }
-        .bmc-header { @apply font-display font-bold text-sm text-brand-600 mb-2 flex items-center gap-2 border-b border-slate-100 pb-2; }
-        .bmc-content { @apply text-xs text-slate-600 space-y-1; }
-        
-        /* Navigation Sidebar Hover */
-        .nav-item { transition: all 0.2s; border-left: 3px solid transparent; }
-        .nav-item:hover { background-color: #f1f5f9; color: #2563eb; }
-        .nav-item.active { border-left-color: #2563eb; background-color: #eff6ff; color: #1d4ed8; font-weight: 600; }
-        
-        /* Pattern background */
-        .bg-pattern {
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-
-        .chat-widget {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: bottom right;
-        }
-        .chat-widget.hidden-chat {
-            opacity: 0;
-            transform: scale(0.9) translateY(20px);
-            pointer-events: none;
-        }
-        
-        /* Typing animation */
-        .typing-dot {
-            animation: typing 1.4s infinite ease-in-out both;
-        }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes typing {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="text-slate-800 bg-pattern h-screen w-screen flex antialiased selection:bg-brand-500 selection:text-white">
 
@@ -200,7 +82,7 @@
         </div>
 
         <!-- Slides Container -->
-        <div id="slides-container" class="relative w-full h-full p-4 pt-20 md:pt-12 md:p-12 lg:p-16">
+        <div id="slides-container" class="relative w-full h-full p-4 pt-28 pb-24 md:pt-12 md:pb-0 md:p-12 lg:p-16">
             
             <section class="slide active" id="slide-1" data-title="Capa do Projeto">
                 <div class="glass-card rounded-3xl w-full max-w-5xl h-auto min-h-full flex flex-col md:flex-row overflow-hidden relative">
@@ -209,7 +91,7 @@
                     <div class="absolute bottom-0 left-0 w-72 h-72 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 -translate-x-1/2 translate-y-1/2"></div>
 
                     <div class="flex-1 p-8 md:p-20 flex flex-col justify-center z-10">
-                        <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-600 text-xs font-semibold tracking-wide uppercase mb-6 border border-brand-100 w-max slide-element" style="transition-delay: 0.1s">Apresentação Executiva</span>
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-600 text-xs font-semibold tracking-wide uppercase mb-6 border border-brand-100 w-max slide-element" style="transition-delay: 0.1s">Apresentação</span>
                         <h1 class="text-4xl md:text-7xl font-display font-bold text-dark leading-tight mb-6 slide-element" style="transition-delay: 0.2s">
                             Projeto <br><span class="text-brand-600">Sinfonia do Sabor</span>
                         </h1>
@@ -230,12 +112,12 @@
                 </div>
             </section>
 
-            <section class="slide" id="slide-2" data-title="Sumário Executivo">
+            <section class="slide" id="slide-2" data-title="Sumário">
                 <div class="glass-card rounded-3xl w-full max-w-5xl h-auto min-h-full p-8 md:p-12 flex flex-col justify-center relative overflow-hidden">
                     <i class="fa-solid fa-quote-left absolute top-4 left-4 md:top-12 md:left-12 text-6xl md:text-8xl text-slate-100 z-0"></i>
                     
                     <div class="z-10 max-w-3xl mx-auto text-center mt-8 md:mt-0">
-                        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-8">Sumário Executivo</h2>
+                        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-8">Sumário</h2>
                         <div class="w-20 h-1 bg-brand-500 mx-auto mb-10 rounded-full"></div>
                         
                         <p class="text-xl md:text-2xl text-slate-700 leading-relaxed font-light mb-8">
@@ -521,22 +403,29 @@
                     <div class="glass-card rounded-2xl flex-1 flex flex-col overflow-hidden border border-slate-200 slide-element" style="transition-delay: 0.1s">
                         <!-- Tab Headers -->
                         <div class="flex border-b border-slate-200 bg-slate-50 flex-wrap sm:flex-nowrap">
-                            <button onclick="changeDiagram(1)" id="tab-1" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-brand-600 border-b-2 border-brand-600 bg-white transition-all">1. Casos de Uso</button>
-                            <button onclick="changeDiagram(2)" id="tab-2" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">2. Classes</button>
-                            <button onclick="changeDiagram(3)" id="tab-3" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">3. Sequência</button>
-                            <button onclick="changeDiagram(4)" id="tab-4" class="w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">4. Atividades</button>
+                            <button data-diagram="1" id="tab-1" class="diagram-tab w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-brand-600 border-b-2 border-brand-600 bg-white transition-all">1. Casos de Uso</button>
+                            <button data-diagram="2" id="tab-2" class="diagram-tab w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">2. Classes</button>
+                            <button data-diagram="3" id="tab-3" class="diagram-tab w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">3. Sequência</button>
+                            <button data-diagram="4" id="tab-4" class="diagram-tab w-1/2 sm:w-auto sm:flex-1 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-slate-500 border-b-2 border-transparent hover:bg-slate-100 transition-all">4. Atividades</button>
                         </div>
                         
                         <!-- Tab Content (Images) -->
                         <div class="flex-1 bg-white p-6 flex flex-col items-center justify-center relative">
-                            <!-- Image container with loading state fallback -->
-                            <div class="w-full h-full border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center bg-slate-50 relative overflow-hidden group">
+                            <!-- Image container with expansion toggle -->
+                            <div id="diagram-viewer" class="w-full h-full border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center bg-slate-50 relative overflow-hidden group cursor-pointer hover:border-slate-300 transition-colors">
                                 
-                                <img id="diagram-image" src="diagrama1.png" alt="Diagrama UML" class="max-w-full max-h-full object-contain z-10 transition-opacity duration-300 relative" onerror="this.src='https://placehold.co/800x400/f8fafc/94a3b8?text=Por+favor,+insira+o+arquivo+diagrama1.png+na+mesma+pasta'">
+                                <img id="diagram-image" src="diagrama1.png" alt="Diagrama UML" class="max-w-full max-h-full object-contain z-10 transition-all duration-300 relative" onerror="this.src='https://placehold.co/800x400/f8fafc/94a3b8?text=Por+favor,+insira+o+arquivo+diagrama1.png+na+mesma+pasta'">
                                 
                                 <div class="absolute bottom-4 left-0 right-0 text-center z-20">
-                                    <span id="diagram-caption" class="bg-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm">Visão macro das interações entre os atores (Nível Zero)</span>
+                                    <button id="diagram-caption" type="button" class="diagram-caption-toggle bg-dark/80 text-white px-4 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm hover:bg-dark transition-colors">Visão macro das interações entre os atores (Nível Zero)</button>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Lightbox Modal -->
+                        <div id="diagram-modal" class="hidden diagram-modal-overlay" onclick="closeDiagramModal(event)">
+                            <div class="diagram-modal-content" onclick="event.stopPropagation()">
+                                <img id="diagram-modal-image" src="diagrama1.png" alt="Diagrama UML expandido" class="diagram-modal-image">
                             </div>
                         </div>
                     </div>
@@ -580,6 +469,29 @@
                             <h3 class="text-lg font-bold text-dark mb-2">Banco de Dados</h3>
                             <p class="text-sm text-slate-600 flex-1">Estrutura relacional robusta (Usuario, Mesa, Produto, Pedido, Pagamento).</p>
                             <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-500 uppercase flex items-center gap-1"><i class="fa-solid fa-plus"></i> Detalhes</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide" id="slide-9" data-title="Agradecimentos">
+                <div class="glass-card rounded-3xl w-full max-w-4xl mx-auto p-10 md:p-16 flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-500/10 via-white to-amber-100 opacity-90"></div>
+                    <div class="relative z-10">
+                        <span class="inline-block py-2 px-4 rounded-full bg-brand-50 text-brand-700 text-xs font-semibold tracking-wide uppercase mb-6">Encerramento</span>
+                        <h2 class="text-4xl md:text-5xl font-display font-bold text-dark mb-6">Muito Obrigado!</h2>
+                        <p class="text-lg md:text-xl text-slate-700 leading-relaxed max-w-2xl mx-auto mb-8">
+                            Agradecemos a atenção e a oportunidade de apresentar o <strong>Projeto Sinfonia do Sabor</strong>. Estamos à disposição para levar essa transformação digital ao restaurante com excelência, agilidade e foco no cliente.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+                            <div class="p-6 bg-white/90 rounded-3xl border border-slate-200 shadow-sm">
+                                <h3 class="text-lg font-semibold text-dark mb-3">Equipe do Projeto</h3>
+                                <p class="text-slate-600">Tamires Dias, Lucas Cunha, Ronaldo Carlos, Thaynan Luiz e Edison Marcos.</p>
+                            </div>
+                            <div class="p-6 bg-white/90 rounded-3xl border border-slate-200 shadow-sm">
+                                <h3 class="text-lg font-semibold text-dark mb-3">Agradecimento Especial</h3>
+                                <p class="text-slate-600">Ao Professor Marcelo Vasconcelos Fatudo e a todos que contribuíram para a construção desta proposta.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -663,292 +575,6 @@
 
     </main>
 
-    <script>
-        // State
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        
-        // Diagram Data
-        const diagrams = {
-            1: { file: 'diagrama1.png', desc: 'Visão macro das interações entre os atores (Nível Zero)' },
-            2: { file: 'diagrama2.png', desc: 'Estrutura do banco de dados e orientação a objetos (Classes)' },
-            3: { file: 'diagrama3.png', desc: 'Caminho dos dados no fechamento de pedido (Sequência)' },
-            4: { file: 'diagrama4.png', desc: 'Jornada lógica do consumidor dentro do restaurante (Atividades)' }
-        };
-
-        // Initialize App
-        function init() {
-            buildSidebar();
-            updateUI();
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'Enter') nextSlide();
-                if (e.key === 'ArrowLeft') prevSlide();
-                if (e.key === 'Escape') closeModal();
-            });
-            
-            // Swipe gestures setup para Mobile
-            let touchStartX = 0;
-            let touchEndX = 0;
-            const container = document.getElementById('slides-container');
-            
-            container.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
-            container.addEventListener('touchend', e => { 
-                touchEndX = e.changedTouches[0].screenX; 
-                if (touchEndX < touchStartX - 50) nextSlide();
-                if (touchEndX > touchStartX + 50) prevSlide();
-            }, {passive: true});
-        }
-
-        // Build Sidebar Navigation dynamically
-        function buildSidebar() {
-            const nav = document.getElementById('sidebar-nav');
-            slides.forEach((slide, index) => {
-                const title = slide.getAttribute('data-title');
-                const btn = document.createElement('button');
-                btn.className = `nav-item w-full text-left px-6 py-3 text-sm text-slate-600 block focus:outline-none ${index === 0 ? 'active' : ''}`;
-                btn.id = `nav-${index}`;
-                btn.innerHTML = `<span class="opacity-50 mr-2">${index + 1}.</span> ${title}`;
-                btn.onclick = () => goToSlide(index);
-                nav.appendChild(btn);
-            });
-        }
-
-        // Navigation Functions
-        function nextSlide() {
-            if (currentSlideIndex < totalSlides - 1) goToSlide(currentSlideIndex + 1);
-        }
-
-        function prevSlide() {
-            if (currentSlideIndex > 0) goToSlide(currentSlideIndex - 1);
-        }
-
-        function goToSlide(index) {
-            // Remove active classes
-            slides[currentSlideIndex].classList.remove('active');
-            slides[currentSlideIndex].classList.add('previous'); // Slide up effect
-            document.getElementById(`nav-${currentSlideIndex}`).classList.remove('active');
-            
-            // For slides ahead of the new target, remove 'previous' class so they slide from bottom
-            slides.forEach((s, i) => {
-                if(i >= index) s.classList.remove('previous');
-            });
-
-            // Update state
-            currentSlideIndex = index;
-            
-            // Add active classes
-            slides[currentSlideIndex].classList.add('active');
-            document.getElementById(`nav-${currentSlideIndex}`).classList.add('active');
-            
-            // Auto-close sidebar on mobile after navigating
-            if(window.innerWidth < 768) {
-                document.getElementById('sidebar').classList.add('-translate-x-full');
-            }
-
-            updateUI();
-        }
-
-        function updateUI() {
-            // Update Buttons
-            document.getElementById('btn-prev').disabled = currentSlideIndex === 0;
-            document.getElementById('btn-next').disabled = currentSlideIndex === totalSlides - 1;
-            
-            // Update Progress Bar
-            const progress = ((currentSlideIndex + 1) / totalSlides) * 100;
-            document.getElementById('progress-bar').style.width = `${progress}%`;
-        }
-
-        // Sidebar Toggle for Mobile
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('-translate-x-full');
-        }
-
-        // Funções do Modal Interativo
-        function openModal(title, contentHTML) {
-            const modal = document.getElementById('info-modal');
-            const backdrop = document.getElementById('modal-backdrop');
-            const contentWrapper = document.getElementById('modal-content-wrapper');
-            
-            document.getElementById('modal-title').innerHTML = title;
-            document.getElementById('modal-body').innerHTML = contentHTML;
-
-            modal.classList.remove('hidden');
-            // Force reflow para garantir a animação
-            void modal.offsetWidth;
-            
-            backdrop.classList.remove('opacity-0');
-            contentWrapper.classList.remove('scale-95', 'opacity-0');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('info-modal');
-            document.getElementById('modal-backdrop').classList.add('opacity-0');
-            document.getElementById('modal-content-wrapper').classList.add('scale-95', 'opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
-
-        // Interactive Diagrams Tab System
-        function changeDiagram(id) {
-            // Update Tabs UI
-            for (let i = 1; i <= 4; i++) {
-                const tab = document.getElementById(`tab-${i}`);
-                if (i === id) {
-                    tab.classList.add('text-brand-600', 'border-brand-600', 'bg-white');
-                    tab.classList.remove('text-slate-500', 'border-transparent', 'hover:bg-slate-100');
-                } else {
-                    tab.classList.remove('text-brand-600', 'border-brand-600', 'bg-white');
-                    tab.classList.add('text-slate-500', 'border-transparent', 'hover:bg-slate-100');
-                }
-            }
-
-            // Update Image and Caption with slight fade effect
-            const img = document.getElementById('diagram-image');
-            const caption = document.getElementById('diagram-caption');
-            
-            img.style.opacity = 0;
-            setTimeout(() => {
-                img.src = diagrams[id].file;
-                // Add fallback error handling dynamically
-                img.onerror = function() {
-                    this.src = `https://placehold.co/800x400/f8fafc/94a3b8?text=Por+favor,+insira+o+arquivo+${diagrams[id].file}+na+mesma+pasta`;
-                };
-                caption.textContent = diagrams[id].desc;
-                img.style.opacity = 1;
-            }, 150);
-        }
-
-        // --- GEMINI AI ASSISTANT LOGIC ---
-        let chatOpen = false;
-        
-        function toggleChat() {
-            const panel = document.getElementById('ai-chat-panel');
-            chatOpen = !chatOpen;
-            if (chatOpen) {
-                panel.classList.remove('hidden-chat');
-                document.getElementById('chat-input').focus();
-            } else {
-                panel.classList.add('hidden-chat');
-            }
-        }
-
-        function appendMessage(text, isUser = false) {
-            const historyObj = document.getElementById('chat-history');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `flex gap-2 ${isUser ? 'justify-end' : ''}`;
-            
-            const avatarHtml = isUser 
-                ? `<div class="w-6 h-6 rounded-full bg-brand-100 flex-shrink-0 flex items-center justify-center text-brand-600 text-xs mt-1 order-2"><i class="fa-solid fa-user"></i></div>`
-                : `<div class="w-6 h-6 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center text-slate-500 text-xs mt-1"><i class="fa-solid fa-robot"></i></div>`;
-            
-            const bubbleHtml = `<div class="${isUser ? 'bg-brand-600 text-white rounded-tr-sm order-1' : 'bg-white border border-slate-200 text-slate-700 rounded-tl-sm shadow-sm'} p-3 rounded-2xl text-sm max-w-[85%] whitespace-pre-wrap">${text}</div>`;
-            
-            msgDiv.innerHTML = avatarHtml + bubbleHtml;
-            historyObj.appendChild(msgDiv);
-            historyObj.scrollTop = historyObj.scrollHeight;
-        }
-
-        function showTypingIndicator() {
-            const historyObj = document.getElementById('chat-history');
-            const indicatorDiv = document.createElement('div');
-            indicatorDiv.id = 'typing-indicator';
-            indicatorDiv.className = `flex gap-2`;
-            indicatorDiv.innerHTML = `
-                <div class="w-6 h-6 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center text-slate-500 text-xs mt-1"><i class="fa-solid fa-robot"></i></div>
-                <div class="bg-white border border-slate-200 p-4 rounded-2xl rounded-tl-sm shadow-sm flex gap-1 items-center h-10">
-                    <div class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></div>
-                    <div class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></div>
-                    <div class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></div>
-                </div>
-            `;
-            historyObj.appendChild(indicatorDiv);
-            historyObj.scrollTop = historyObj.scrollHeight;
-        }
-
-        function removeTypingIndicator() {
-            const indicator = document.getElementById('typing-indicator');
-            if (indicator) indicator.remove();
-        }
-
-        const apiKey = ""; // API Key will be automatically injected by the environment
-        const systemPrompt = `Você é o Assistente Virtual e Especialista Técnico do "Projeto Sinfonia do Sabor", elaborado pelo Grupo 8 (Tamires Dias, Lucas Cunha, Ronaldo Carlos, Thaynan Luiz, Edison Marcos) da faculdade Centro Universitário Augusto Motta. Seu papel é responder perguntas sobre o projeto durante a apresentação de forma amigável, inteligente e executiva.
-        
-Contexto do Projeto:
-- Resumo: Transformação digital de um restaurante, focando em autoatendimento e inteligência de negócios com abordagem híbrida.
-- Escopo Principal (MVP): 
-  1. PWA e Autoatendimento via QR Code.
-  2. KDS (Kitchen Display System) para a cozinha.
-  3. Dashboard de BI para o gerente.
-- Prazo e Metodologia: 16 semanas totais. Desenvolvimento do PWA usará Scrum (3 Sprints exatas de 2 semanas, Semanas 5 a 11). O Gerente atua como Product Owner.
-- Custos (CAPEX): Orçamento base R$ 42.300 + 10% contingência = Total R$ 46.530,00. OPEX de R$ 450/mês.
-- Arquitetura: Uso de API Rest com formato JSON e WebSockets para enviar pedidos da API direto para a Cozinha (KDS) em tempo real. Banco de Dados com entidades: Usuario, Mesa, Produto, Pagamento, Pedido, ItemPedido.
-- Riscos: Expansão de Escopo, Atraso em Integrações de pagamento e Resistência da equipe do restaurante ao novo sistema.
-
-Regras:
-1. Responda APENAS com base nessas informações. Se perguntarem algo fora disso, diga educadamente que o escopo atual do projeto não cobre essa área.
-2. Seja conciso (no máximo 1 a 2 parágrafos).`;
-
-        async function fetchWithBackoff(payload, retries = 3, delay = 1000) {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (!response.ok) {
-                    if (response.status === 429 && retries > 0) {
-                        await new Promise(res => setTimeout(res, delay));
-                        return fetchWithBackoff(payload, retries - 1, delay * 2);
-                    }
-                    throw new Error(`API Error: ${response.status}`);
-                }
-                return await response.json();
-            } catch (error) {
-                if (retries > 0) {
-                    await new Promise(res => setTimeout(res, delay));
-                    return fetchWithBackoff(payload, retries - 1, delay * 2);
-                }
-                throw error;
-            }
-        }
-
-        async function sendMessage() {
-            const inputField = document.getElementById('chat-input');
-            const message = inputField.value.trim();
-            if (!message) return;
-
-            // Clear input and show user message
-            inputField.value = '';
-            appendMessage(message, true);
-            showTypingIndicator();
-
-            const payload = {
-                contents: [{ parts: [{ text: message }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] }
-            };
-
-            try {
-                const result = await fetchWithBackoff(payload);
-                removeTypingIndicator();
-                
-                if (result.candidates && result.candidates.length > 0) {
-                    const aiText = result.candidates[0].content.parts[0].text;
-                    appendMessage(aiText, false);
-                } else {
-                    appendMessage("Desculpe, tive um problema ao processar a resposta.", false);
-                }
-            } catch (error) {
-                removeTypingIndicator();
-                appendMessage("Erro na conexão com a IA. Tente novamente mais tarde.", false);
-            }
-        }
-
-        // Run
-        window.onload = init;
-    </script>
+    <script src="script.js" defer></script>
 </body>
 </html>
